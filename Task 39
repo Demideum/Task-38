@@ -1,0 +1,38 @@
+namespace Task_38
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] firstArrow = { "1", "2", "1" };
+            string[] secondArrow = { "3", "2" };
+            List<string> collection = new List<string>();
+
+            Union(firstArrow, secondArrow);
+        }
+
+        public static List<string> Union(string[] firstArrow, string[] secondArrow)
+        {
+            List<string> collection = new List<string>();
+
+            collection.AddRange(firstArrow);
+            collection.AddRange(secondArrow);
+
+            Console.WriteLine("Список с одинаковыми элементами:");
+            collection.ForEach(Console.Write);
+
+            List<string> tempList = new List<string>();
+
+            foreach (var i in collection)
+            {
+                if (tempList.IndexOf(i) < 0)
+                    tempList.Add(i);
+            }
+
+            Console.WriteLine("\n\nСписок без одинаковых элементов:");
+            tempList.ForEach(Console.Write);
+            Console.ReadKey();
+            return tempList;
+        }
+    }
+}
